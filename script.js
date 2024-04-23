@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let timeLeft = 30;
 
     const storyParts = [
+        // 物語の部分をここに挿入
         "むかしむかし、あるところに、おじいさんとおばあさんが住んでいました。",
         "おじいさんは山へしばかりに、おばあさんは川へせんたくに行きました。",
         "おばあさんが川でせんたくをしていると、ドンブラコ、ドンブラコと、大きな桃が流れてきました。",
@@ -42,11 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
         "とうとう鬼の親分が、「まいったぁ、まいったぁ。こうさんだ、助けてくれぇ」と、手をついてあやまりました。",
         "桃太郎とイヌとサルとキジは、鬼から取り上げた宝物をくるまにつんで、元気よく家に帰りました。",
         "おじいさんとおばあさんは、桃太郎の無事な姿を見て大喜びです。",
-        "そして三人は、宝物のおかげでしあわせにくらしましたとさ。おしまい。" // 物語の部分をここに挿入
+        "そして三人は、宝物のおかげでしあわせにくらしましたとさ。おしまい。"
+        // 他の物語パーツ...
     ];
     let currentPartIndex = 0;
 
     startButton.addEventListener('click', function() {
+        storyText.style.display = "block";
         storyText.textContent = storyParts[currentPartIndex]; // 初期テキストの設定
         typingArea.disabled = false;
         typingArea.focus();
@@ -127,7 +130,3 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCharCountDisplay(); // 初期表示更新
     typingArea.addEventListener('input', convertToRomaji); // 入力時にローマ字変換を実行
 });
-
-  
-      
-    
