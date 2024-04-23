@@ -42,14 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
         "とうとう鬼の親分が、「まいったぁ、まいったぁ。こうさんだ、助けてくれぇ」と、手をついてあやまりました。",
         "桃太郎とイヌとサルとキジは、鬼から取り上げた宝物をくるまにつんで、元気よく家に帰りました。",
         "おじいさんとおばあさんは、桃太郎の無事な姿を見て大喜びです。",
-        "そして三人は、宝物のおかげでしあわせにくらしましたとさ。おしまい。"
-        // 続きの物語は同じ配列に含めます
+        "そして三人は、宝物のおかげでしあわせにくらしましたとさ。おしまい。" // 物語の部分をここに挿入
     ];
     let currentPartIndex = 0;
 
     startButton.addEventListener('click', function() {
-        typingArea.disabled = false;
         storyText.textContent = storyParts[currentPartIndex]; // 初期テキストの設定
+        typingArea.disabled = false;
         typingArea.focus();
         startTimer();
         startButton.style.display = 'none'; // ゲーム開始後はボタンを非表示にする
@@ -100,14 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
         startTimer();
     }
 
-    function finishGame() {
-        clearInterval(timer);
-        storyText.textContent = "物語の終わりです。お疲れ様でした！";
-        typingArea.disabled = true;
-        updateCharCountDisplay();
-        startButton.style.display = 'block'; // リスタート用にボタンを再表示
-    }
-
     function updateTimerDisplay() {
         timerDisplay.textContent = `残り時間: ${timeLeft} 秒`;
     }
@@ -116,5 +107,27 @@ document.addEventListener('DOMContentLoaded', function() {
         charCountDisplay.textContent = `合計入力文字数: ${totalCharactersTyped}`;
     }
 
+    function finishGame() {
+        clearInterval(timer);
+        storyText.textContent = "物語の終わりです。お疲れ様でした！";
+        typingArea.disabled = true;
+        updateCharCountDisplay();
+        startButton.textContent = 'もう一度始める';
+        startButton.style.display = 'block';
+        startButton.onclick = function() {
+            currentPartIndex = 0;
+            totalCharactersTyped = 0;
+            timeLeft = 30;
+            updateCharCountDisplay();
+            updateTimerDisplay();
+            this.click();
+        };
+    }
+
     updateCharCountDisplay(); // 初期表示更新
+    typingArea.addEventListener('input', convertToRomaji); // 入力時にローマ字変換を実行
 });
+
+  
+      
+    
