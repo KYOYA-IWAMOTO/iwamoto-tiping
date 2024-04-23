@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>いわもとタイピング - 桃太郎</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/wanakana"></script>
+</head>
+<body>
+    <h1>いわもとタイピング - 桃太郎</h1>
+    <div id="storyText">ここをクリックしてゲームを開始してください。</div>
+    <div id="romajiText">ここにローマ字が表示されます。</div>
+    <textarea id="typingArea" placeholder="ここでタイピングしてください" oninput="convertToRomaji()"></textarea>
+    <div id="charCountDisplay">合計入力文字数: 0</div>
+    <div id="timerDisplay">残り時間: 30 秒</div>
+    <script src="app.js"></script>
+</body>
+</html>
