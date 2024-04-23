@@ -8,9 +8,10 @@
 </head>
 <body>
     <h1>いわもとタイピング - 桃太郎</h1>
-    <div id="storyText">ここをクリックしてゲームを開始してください。</div>
-    <div id="romajiText">ここにローマ字が表示されます。</div>
-    <textarea id="typingArea" placeholder="ここでタイピングしてください" oninput="convertToRomaji()"></textarea>
+    <button id="startButton">ここをクリックしてゲームを開始してください。</button>
+    <div id="storyText"></div>
+    <div id="romajiText"></div>
+    <textarea id="typingArea" placeholder="ここでタイピングしてください" oninput="convertToRomaji()" disabled></textarea>
     <div id="charCountDisplay">合計入力文字数: 0</div>
     <div id="timerDisplay">残り時間: 30 秒</div>
     <script src="app.js"></script>

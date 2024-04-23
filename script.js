@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const startButton = document.getElementById('startButton');
     const storyText = document.getElementById('storyText');
     const romajiText = document.getElementById('romajiText');
     const typingArea = document.getElementById('typingArea');
@@ -42,16 +43,16 @@ document.addEventListener('DOMContentLoaded', function() {
         "桃太郎とイヌとサルとキジは、鬼から取り上げた宝物をくるまにつんで、元気よく家に帰りました。",
         "おじいさんとおばあさんは、桃太郎の無事な姿を見て大喜びです。",
         "そして三人は、宝物のおかげでしあわせにくらしましたとさ。おしまい。"
+        // 続きの物語は同じ配列に含めます
     ];
     let currentPartIndex = 0;
-    storyText.textContent = "クリックしてゲームを開始"; // ゲーム開始のメッセージ
 
-    storyText.addEventListener('click', function() {
-        if (currentPartIndex === 0) {
-            storyText.textContent = storyParts[currentPartIndex]; // 初期テキストの設定
-            typingArea.focus();
-            startTimer();
-        }
+    startButton.addEventListener('click', function() {
+        typingArea.disabled = false;
+        storyText.textContent = storyParts[currentPartIndex]; // 初期テキストの設定
+        typingArea.focus();
+        startTimer();
+        startButton.style.display = 'none'; // ゲーム開始後はボタンを非表示にする
     });
 
     function convertToRomaji() {
@@ -104,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
         storyText.textContent = "物語の終わりです。お疲れ様でした！";
         typingArea.disabled = true;
         updateCharCountDisplay();
+        startButton.style.display = 'block'; // リスタート用にボタンを再表示
     }
 
     function updateTimerDisplay() {
